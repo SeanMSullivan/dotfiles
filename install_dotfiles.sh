@@ -1,28 +1,35 @@
 #!/bin/bash
 
-# Save alias
-echo "alias dotfiles='git --git-dir=$'HOME'/.dotfiles/ --work-tree=$'HOME''" >> $HOME/.bash_aliases
+# Define dotfiles command for script. '$@' expands all arguments.
+function dotfiles {
+   git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+}
 
 # Ignore directory to avoid recursion issues when checking out
 echo ".dotfiles" >> .gitignore
 
-# Clone my GitHub directory
+echo "Cloning GitHub repository."
 git clone --bare https://github.com/SeanMSullivan/dotfiles.git $HOME/.dotfiles
 
-# Set command for script
-dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+echo "Checking out dotfiles."
+dotfiles checkout
 
-echo "1"
-# Backup local dotfiles
-mkdir -p .dotfiles-backup && \
-$dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
-xargs -I{} mv {} .dotfiles-backup/{}
+# If checkout returns 0
+if [ $? = 0 ]; then
+  echo "Checked out dotfiles.";
+  else
+    mkdir -p .dotfiles-backup
+    echo "Backing up pre-existing dotfiles in './.dotfiles-backup'.";
+    dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
+fi;
 
-echo "2"
-# Download online files
-$dotfiles checkout
+echo "Files backed up, checking out dotfiles again."
+dotfiles checkout
 
-echo "3"
-# Set local git config flag to hide untracked files
-$dotfiles config --local status.showUntrackedFiles no
+echo "Set local git config flag to hide untracked files."
+dotfiles config status.showUntrackedFiles no
+
+# Save and activate alias
+echo "alias dotfiles='git --git-dir=$'HOME'/.dotfiles/ --work-tree=$'HOME''" >> $HOME/.bash_aliases
+source $HOME/.bash_aliases
 
