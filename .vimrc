@@ -9,7 +9,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " add all plugins here:
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
@@ -19,22 +19,22 @@ call vundle#end()
 filetype plugin indent on
 
 " for autocomplete:
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" let g:ycm_autoclose_preview_window_after_completion=1
+" map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "python with virtualenv support
-py3 << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    namespace = {"__file__":activate_this}
-    with open(activate_this, 'rb') as file:
-        exec(compile(file.read(), activate_this, 'exec'),
-             namespace
-             )
-EOF
+"py3 << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+"project_base_dir = os.environ['VIRTUAL_ENV']
+"activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"namespace = {"__file__":activate_this}
+"with open(activate_this, 'rb') as file:
+"exec(compile(file.read(), activate_this, 'exec'),
+"namespace
+")
+"EOF
 
 set tabstop=4
 set softtabstop=4
