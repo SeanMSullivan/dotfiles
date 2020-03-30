@@ -116,4 +116,5 @@ if ! shopt -oq posix; then
   fi
 fi
 source /opt/ros/melodic/setup.bash
+. ~/.gitbash_aliases
 export DISPLAY=:0
