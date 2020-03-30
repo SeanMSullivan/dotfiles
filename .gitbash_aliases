@@ -1,5 +1,8 @@
 #!/bin/bash
+
 # automatically create completion-aware g<alias> bash aliases for each of your git aliases.
+# reference: https://gist.github.com/mwhite/6887990
+
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
     . /usr/share/bash-completion/completions/git
