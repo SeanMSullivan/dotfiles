@@ -17,5 +17,5 @@ $dotfiles config --local status.showUntrackedFiles no
 echo "alias dotfiles='git --git-dir=$'HOME'/.dotfiles/ --work-tree=$'HOME''" >> $HOME/.bash_aliases
 
 # Activate alias
-source ~/.bash_aliases
+. "$HOME/.bash_aliases"
 
