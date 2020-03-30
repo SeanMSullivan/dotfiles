@@ -27,14 +27,4 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.8
-source ~/.local/bin/virtualenvwrapper.sh
 source ~/gitbash_zenburn-master/.bashrc
-
-if ! grep -qs '/mnt/d ' /proc/mounts
-then
-    sudo mount -t drvfs D: /mnt/d
-    sudo mount -t drvfs E: /mnt/e
-fi

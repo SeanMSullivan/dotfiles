@@ -115,5 +115,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-source /opt/ros/melodic/setup.bash
 export DISPLAY=:0
