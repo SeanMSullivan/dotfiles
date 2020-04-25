@@ -1,4 +1,5 @@
 alias g='git '
-alias cdproj='cd /mnt/d/Projects'
+alias cdproj='cd /d/Projects'
+alias cdhw='cd /d/Projects/Notes/UCSD/Cpp\ Programming\ III/Homework'
 alias lsa='ls -lah'
 alias dotfiles='git --git-dir=$'HOME'/.dotfiles/ --work-tree=$'HOME''
