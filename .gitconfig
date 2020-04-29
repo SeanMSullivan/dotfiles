@@ -27,6 +27,7 @@
     co = checkout
     cob = checkout -b
 
+    p = push
     pom = pull origin master
 
     # list branches sorted by last modified
